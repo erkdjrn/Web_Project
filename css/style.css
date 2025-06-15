@@ -350,7 +350,6 @@ main section h2::after {
     color: var(--light-coral);
 }
 
-/* 퀵 메뉴 기본 스타일 (데스크톱) */
 .quick-menu {
     position: fixed;
     right: 20px;
@@ -403,7 +402,6 @@ main section h2::after {
     display: none;
 }
 
-/* 모바일 화면 (max-width: 768px) 에서의 스타일 */
 @media (max-width: 768px) {
     .main-header .container {
         flex-direction: row;
@@ -523,31 +521,28 @@ main section h2::after {
         margin: 0 10px 10px;
     }
 
-    /* --- 퀵 메뉴 모바일 스타일 변경 시작 --- */
     .quick-menu {
         bottom: 0;
         left: 0;
         right: 0;
         width: 100%;
         border-radius: 0;
-        flex-direction: column; /* 메뉴 항목들을 세로로 정렬 */
-        justify-content: flex-end; /* 아래에 정렬 */
-        padding: 0; /* 내부 패딩 제거 */
+        flex-direction: column; 
+        justify-content: flex-end;
+        padding: 0;
         box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-        /* 기본적으로 접힌 상태 (퀵 메뉴 높이 + 토글 버튼 높이) */
-        transform: translateY(calc(100% - 60px)); /* 토글 버튼 높이만큼만 보이게 (60px는 토글 버튼 높이) */
+        transform: translateY(calc(100% - 60px));
         transition: transform 0.3s ease-in-out;
     }
 
     .quick-menu.active {
-        transform: translateY(0); /* 활성화 시 완전히 위로 올림 */
+        transform: translateY(0);
     }
 
     .quick-menu ul {
-        flex-direction: column; /* 항목들도 세로 정렬 */
-        width: 100%;
+        flex-direction: column;
         justify-content: flex-start;
-        padding-bottom: 60px; /* 토글 버튼이 메뉴 항목을 가리지 않도록 공간 확보 */
+        padding-bottom: 60px;
     }
 
     .quick-menu li {
@@ -561,33 +556,32 @@ main section h2::after {
     }
 
     .quick-menu a {
-        padding: 10px 5px; /* 모바일 탭 바 패딩 조정 */
-        font-size: 0.85em; /* 폰트 크기 조정 */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* 항목 구분선 */
+        padding: 10px 5px; 
+        font-size: 0.85em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .quick-menu li:last-of-type a { /* 'TOP' 버튼 항목에 해당하는 마지막 li의 a 태그 */
-        border-bottom: none; /* 마지막 항목의 구분선 제거 */
+    .quick-menu li:last-of-type a { 
+        border-bottom: none;
     }
 
     .quick-menu a i {
-        font-size: 1.5em; /* 아이콘 크기 약간 키움 */
+        font-size: 1.5em;
         margin-bottom: 5px;
     }
 
-    /* 퀵 메뉴 토글 버튼 (모바일 전용) */
     .quick-menu-toggle {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 60px; /* 토글 버튼 높이 고정 */
-        background-color: var(--dark-navy); /* 토글 버튼 배경색 */
+        height: 60px;
+        background-color: var(--dark-navy);
         color: white;
         cursor: pointer;
         font-weight: bold;
         gap: 10px;
-        flex-shrink: 0; /* 크기 줄어들지 않게 */
+        flex-shrink: 0;
     }
 
     .quick-menu-toggle i {
@@ -595,9 +589,9 @@ main section h2::after {
     }
 
     .quick-menu-toggle.open i {
-        transform: rotate(180deg); /* 펼쳐졌을 때 화살표 회전 */
+        transform: rotate(180deg);
     }
-    /* --- 퀵 메뉴 모바일 스타일 변경 끝 --- */
+  
 
     .sub-page-main {
         flex-direction: column;
@@ -675,13 +669,12 @@ main section h2::after {
 }
 
 main {
-    /* 퀵 메뉴가 아래에서 올라올 때 콘텐츠가 가려지지 않도록 패딩 추가 */
-    padding-bottom: 80px; /* 퀵 메뉴가 접혔을 때의 높이 + 여유 공간 */
+
+    padding-bottom: 80px; 
 }
 
 @media (min-width: 769px) {
     main {
-        /* 데스크톱에서는 퀵 메뉴가 오른쪽에 고정되므로 하단 패딩 제거 */
         padding-bottom: 0;
     }
 }

@@ -6,12 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileSidebarToggle = document.querySelector('.mobile-sidebar-toggle');
     const sidebar = document.querySelector('.sidebar');
 
-    // 모바일 햄버거 메뉴 토글 기능
     if (mobileMenuToggle && mainNav) {
         mobileMenuToggle.addEventListener('click', function() {
             mainNav.classList.toggle('active');
             this.classList.toggle('open');
-            // 메뉴 토글 시 검색창은 닫음
             if (searchArea.classList.contains('active')) {
                 searchArea.classList.remove('active');
                 mobileSearchToggle.classList.remove('active');
@@ -19,12 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 모바일 검색 토글 기능
     if (mobileSearchToggle && searchArea) {
         mobileSearchToggle.addEventListener('click', function() {
             searchArea.classList.toggle('active');
             this.classList.toggle('active');
-            // 검색창 토글 시 메뉴는 닫음
             if (mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
                 mobileMenuToggle.classList.remove('open');
@@ -32,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 모바일 사이드바 토글 (서브 페이지 전용)
     if (mobileSidebarToggle && sidebar) {
         mobileSidebarToggle.addEventListener('click', function() {
             sidebar.classList.toggle('active');
@@ -40,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 모바일 퀵 메뉴 토글 기능 추가 시작 ---
     const quickMenu = document.querySelector('.quick-menu');
     const quickMenuToggle = document.querySelector('.quick-menu-toggle');
 
@@ -50,9 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             quickMenuToggle.classList.toggle('open');
         });
     }
-    // --- 모바일 퀵 메뉴 토글 기능 추가 끝 ---
 
-    // 'TOP' 버튼 클릭 시 부드러운 스크롤 (퀵 메뉴)
     const topButton = document.querySelector('.top-button');
     if (topButton) {
         topButton.addEventListener('click', function(e) {
@@ -64,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 홈 화면 검색 기능 (키워드 기반 리다이렉션)
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     const searchMessage = document.getElementById('searchMessage');
@@ -96,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 목차 클릭 시 부드러운 스크롤 이동 (서브 페이지용)
     const guideTocLinks = document.querySelectorAll('.guide-toc a');
 
     guideTocLinks.forEach(link => {
@@ -124,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     guideTocLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
 
-                    // 사이드바가 모바일에서 열려있다면 닫기
                     if (sidebar && sidebar.classList.contains('active') && window.innerWidth <= 768) {
                         sidebar.classList.remove('active');
                         mobileSidebarToggle.classList.remove('active');
@@ -134,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 스크롤 시 목차 활성화 업데이트 (서브 페이지용)
     const sections = document.querySelectorAll('.sub-page-main .content section');
     window.addEventListener('scroll', function() {
         let current = '';
@@ -166,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 견종 정보 페이지 - 카테고리 토글 초기 설정
     const categoryToggles = document.querySelectorAll('.guide-toc .category-toggle');
     categoryToggles.forEach((toggle, index) => {
         const targetListId = toggle.dataset.target;
