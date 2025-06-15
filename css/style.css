@@ -1,0 +1,740 @@
+/* CSS 스타일 시작 */
+
+/* PDF 컬러 팔레트 변수 정의 */
+:root {
+    --main-beige: #F8F4E6;
+    --soft-green: #A9C4A1;
+    --light-coral: #FFDAB9;
+    --bright-blue: #B0E0E6;
+    --dark-navy: #2C3E50;
+}
+
+/* 전체 기본 스타일 및 폰트 설정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif; /* 본문 폰트 */
+    color: var(--dark-navy); /* 진한 네이비 강조색을 본문 색상으로 활용 */
+    background-color: var(--main-beige); /* 따뜻한 베이지 메인 색상 */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Pretendard', sans-serif; /* 제목 폰트 */
+    color: var(--dark-navy); /* 진한 네이비 강조색 */
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h1 { font-size: clamp(32px, 5vw, 48px); } /* 반응형 폰트 사이즈 */
+h2 { font-size: clamp(24px, 4vw, 36px); }
+h3 { font-size: clamp(20px, 3vw, 28px); }
+p, li { font-size: clamp(14px, 2vw, 16px); } /* 반응형 폰트 사이즈 */
+
+a {
+    text-decoration: none;
+    color: var(--soft-green); /* 부드러운 그린 서브 색상 */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--light-coral); /* 연한 코랄 서브 색상 */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 헤더 스타일 */
+.main-header {
+    background-color: var(--main-beige); /* 따뜻한 베이지 */
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; /* 상단 고정 네비게이션 바 */
+    top: 0; /* 항상 상단에 고정 */
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* 모바일에서 요소들이 줄바꿈되도록 */
+}
+
+.main-header .logo {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--dark-navy);
+    flex-shrink: 0; /* 줄어들지 않도록 */
+}
+
+.main-nav {
+    flex-grow: 1; /* 남은 공간을 차지하도록 */
+    text-align: right;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-nav li {
+    margin-left: 30px;
+    flex-shrink: 0;
+}
+
+.main-nav a {
+    color: var(--dark-navy);
+    font-weight: 500;
+}
+
+.search-area {
+    display: flex;
+    flex-direction: column; /* 검색 바와 메시지 세로 정렬 */
+    align-items: flex-end;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: auto; /* 내용에 따라 너비 조절 */
+}
+
+.search-bar input {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 20px;
+    outline: none;
+    width: 180px; /* 기본 너비 */
+    transition: width 0.3s ease;
+}
+
+.search-bar input:focus {
+    width: 220px; /* 포커스 시 너비 확장 */
+}
+
+.search-bar button {
+    background-color: var(--soft-green);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #8dbb83; /* 어두운 그린 */
+}
+
+.search-message {
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: red;
+    text-align: right;
+    width: 100%; /* 부모에 맞춰 정렬 */
+}
+
+/* 모바일 메뉴 토글 (데스크탑에서는 숨김) */
+.mobile-menu-toggle {
+    display: none; /* 기본적으로 숨김 */
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    justify-content: space-between;
+    margin-left: 20px; /* 로고와 토글 버튼 사이 간격 */
+}
+
+.mobile-menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-navy);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 햄버거 메뉴 X 아이콘 변환 */
+.mobile-menu-toggle.open span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.mobile-menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.mobile-menu-toggle.open span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* 히어로 섹션 (고정 배너) */
+.hero-section {
+    position: relative;
+    height: 500px; /* 적절한 높이 설정 */
+    overflow: hidden;
+    background-color: var(--bright-blue); /* 밝은 블루 서브 색상 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* 고정 배너 스타일 */
+.fixed-banner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.fixed-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(0.7); /* 이미지를 약간 어둡게 하여 텍스트 가독성 높이기 */
+}
+
+/* 캡션 스타일 (fixed-banner 내에서도 동일하게 적용) */
+.banner-caption {
+    z-index: 1;
+    padding: 20px; /* 텍스트와 경계 간격 */
+}
+
+.banner-caption h2 {
+    color: white;
+    font-size: clamp(2.5em, 5vw, 3.5em);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 텍스트 그림자 */
+}
+
+.banner-caption p {
+    color: white;
+    font-size: clamp(1.2em, 2.5vw, 1.8em);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 텍스트 그림자 */
+}
+
+
+/* 주요 섹션 제목 스타일 */
+main section h2 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+main section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--soft-green);
+    border-radius: 2px;
+}
+
+
+/* 카드형 콘텐츠 (인기 가이드) */
+.popular-guides .guide-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    justify-content: center; /* 카드 중앙 정렬 */
+}
+
+.popular-guides .card {
+    background-color: white;
+    border-radius: 12px; /* 부드러운 모서리 */
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none; /* 링크 카드 기본 밑줄 제거 */
+    color: inherit; /* 링크 카드 글자색 상속 */
+}
+
+.popular-guides .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.popular-guides .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.popular-guides .card-content {
+    padding: 20px;
+    flex-grow: 1; /* 내용이 카드 크기에 맞게 채워지도록 */
+}
+
+.popular-guides .card h3 {
+    font-size: 1.25em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--dark-navy);
+}
+
+.popular-guides .card p {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* 최신 소식 섹션 제거됨 */
+
+/* 푸터 스타일 */
+.main-footer {
+    background-color: var(--dark-navy); /* 진한 네이비 */
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-footer p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.main-footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-footer li {
+    margin: 0 15px;
+    margin-bottom: 10px; /* 모바일에서 줄바꿈 시 간격 */
+}
+
+.main-footer a {
+    color: white;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.main-footer a:hover {
+    opacity: 1;
+    color: var(--light-coral);
+}
+
+
+/* 퀵 메뉴 (데스크탑: 오른쪽 하단, 모바일: 하단 탭 바) */
+.quick-menu {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--soft-green);
+    border-radius: 12px; /* 부드러운 모서리 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.quick-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.quick-menu li {
+    margin-bottom: 8px;
+}
+
+.quick-menu li:last-child {
+    margin-bottom: 0;
+}
+
+.quick-menu a {
+    display: flex; /* 아이콘과 텍스트 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quick-menu a i {
+    font-size: 1.2em; /* 아이콘 크기 */
+    margin-bottom: 3px;
+}
+
+.quick-menu a:hover {
+    background-color: #8dbb83; /* 어두운 그린 */
+    transform: translateY(-2px);
+}
+
+
+/* 반응형 디자인 (모바일 최적화) */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column; /* 세로로 정렬 */
+        align-items: flex-start; /* 왼쪽 정렬 */
+    }
+
+    .main-header .logo {
+        width: auto;
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 5px; /* 로고 상단 여백 */
+    }
+
+    .main-nav {
+        display: none; /* 햄버거 메뉴 클릭 전 숨김 */
+        width: 100%;
+        text-align: left;
+        background-color: var(--main-beige);
+        position: absolute;
+        top: 70px; /* 헤더 아래에 위치 */
+        left: 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 10px 0;
+    }
+
+    .main-nav.active {
+        display: block; /* 햄버거 메뉴 클릭 시 보임 */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start; /* 왼쪽 정렬 */
+    }
+
+    .main-nav li {
+        margin: 0; /* 기존 마진 제거 */
+        width: 100%;
+    }
+
+    .main-nav a {
+        padding: 12px 20px; /* 메뉴 항목 패딩 */
+        display: block;
+        border-bottom: 1px solid #eee; /* 구분선 */
+    }
+
+    .main-nav li:last-child a {
+        border-bottom: none;
+    }
+
+    .search-area {
+        order: 3; /* 모바일에서 검색 영역을 마지막으로 이동 */
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 0;
+        align-items: center; /* 검색바와 메시지 중앙 정렬 */
+    }
+
+    .search-bar {
+        width: 70%; /* 모바일에서 검색창 너비 조정 */
+        max-width: 250px;
+    }
+    .search-bar input {
+        width: 100%;
+    }
+    .search-bar input:focus {
+        width: 100%;
+    }
+
+    .mobile-menu-toggle {
+        display: flex; /* 모바일에서 햄버거 메뉴 보임 */
+        position: absolute;
+        right: 20px;
+        top: 25px;
+    }
+
+    .hero-section {
+        height: 300px;
+    }
+
+    .popular-guides .guide-cards {
+        grid-template-columns: 1fr; /* 모바일에서는 카드형 콘텐츠 세로 스크롤 */
+    }
+
+    /* 푸터 */
+    .main-footer li {
+        margin: 0 10px 10px;
+    }
+
+    /* 모바일 하단 탭 바 네비게이션 */
+    .quick-menu {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 0;
+        flex-direction: row; /* 가로로 정렬 */
+        justify-content: space-around;
+        padding: 5px 0;
+        box-shadow: 0 -4px 10px rgba(0,0,0,0.1); /* 상단 그림자 */
+    }
+
+    .quick-menu ul {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .quick-menu li {
+        margin: 0; /* 기존 마진 제거 */
+        flex: 1; /* 동일한 너비로 배분 */
+        text-align: center;
+    }
+
+    .quick-menu a {
+        padding: 8px 5px; /* 모바일 탭 바 패딩 */
+        font-size: 0.75em;
+    }
+
+    .quick-menu a i {
+        font-size: 1.3em; /* 아이콘 크기 약간 키움 */
+        margin-bottom: 3px;
+    }
+
+    /* 서브 페이지 메인 콘텐츠 및 사이드바 레이아웃 */
+    .sub-page-main {
+        display: flex;
+        flex-direction: column; /* 모바일에서는 세로로 쌓이도록 */
+        gap: 20px; /* 간격 조절 */
+    }
+
+    .sub-page-main .sidebar {
+        position: static; /* 모바일에서는 고정 해제 */
+        width: 100%; /* 너비 100% */
+        box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    }
+
+    .sub-page-main .content {
+        width: 100%; /* 너비 100% */
+        box-sizing: border-box;
+    }
+
+    /* 견종 정보 페이지 목차 (중첩 목록) 스타일 추가 */
+    .sub-page-main .guide-toc ul ul {
+        margin-left: 15px; /* 하위 목록 들여쓰기 */
+        list-style: none; /* 기본 점 제거 */
+        padding: 0;
+        margin-top: 5px;
+    }
+
+    .sub-page-main .guide-toc ul ul li a {
+        font-size: 0.9em; /* 하위 목록 글자 크기 작게 */
+        padding: 5px 10px; /* 패딩 조절 */
+    }
+}
+
+/* 추가된 서브 페이지 관련 스타일 */
+
+.sub-page-main {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    /* 스크롤 시 헤더에 가려지지 않도록 상단 패딩 추가 */
+    padding-top: 100px; /* 헤더 높이와 여유 공간을 고려 */
+}
+
+.sub-page-main .sidebar {
+    flex: 0 0 250px; /* 목차 고정 너비 */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky; /* 스크롤 시 목차 고정 */
+    top: 100px; /* 헤더 높이를 고려하여 100px 아래에 위치 */
+    height: fit-content; /* 내용에 따라 높이 조절 */
+}
+
+.sub-page-main .sidebar h3 {
+    margin-top: 0;
+    color: var(--soft-green);
+}
+
+.sub-page-main .guide-toc ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* 카테고리 토글 링크 (예: 소형견, 중형견, 대형견) */
+.sub-page-main .guide-toc .category-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    color: var(--dark-navy);
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5px; /* 하위 목록과의 간격 */
+}
+
+.sub-page-main .guide-toc .category-toggle:hover {
+    background-color: var(--light-coral);
+}
+
+/* 토글 아이콘 (화살표) 스타일 */
+.sub-page-main .guide-toc .category-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.sub-page-main .guide-toc .category-toggle.open i {
+    transform: rotate(180deg); /* 펼쳐졌을 때 화살표 위로 */
+}
+
+/* 접히는 목록 (개별 견종 리스트) */
+.sub-page-main .guide-toc .collapsible-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    margin-left: 15px; /* 들여쓰기 */
+    max-height: 500px; /* 최대 높이 설정 */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.sub-page-main .guide-toc .collapsible-list.hidden {
+    max-height: 0;
+    opacity: 0;
+}
+
+.sub-page-main .guide-toc .collapsible-list li {
+    margin-bottom: 5px; /* 하위 목록 아이템 간격 */
+}
+
+.sub-page-main .guide-toc .collapsible-list li a {
+    font-size: 0.9em;
+    padding: 5px 10px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    color: #555;
+}
+.sub-page-main .guide-toc .collapsible-list li a:hover,
+.sub-page-main .guide-toc .collapsible-list li a.active {
+    background-color: #f0f0f0;
+    color: var(--dark-navy);
+}
+
+
+.sub-page-main .content {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.sub-page-main .content section {
+    margin-bottom: 40px;
+}
+
+.sub-page-main .content h2 {
+    color: var(--soft-green);
+    border-bottom: 2px solid var(--soft-green);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sub-page-main .content h3 { /* 견종별 제목 스타일 */
+    font-size: 1.5em;
+    color: var(--dark-navy);
+    margin-bottom: 15px;
+}
+
+.sub-page-main .content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block; /* 이미지가 블록 요소가 되도록 */
+    margin-left: auto;
+    margin-right: auto; /* 이미지 중앙 정렬 */
+}
+
+.sub-page-main .content ul,
+.sub-page-main .content ol {
+    padding-left: 20px; /* 목록 들여쓰기 */
+    margin-bottom: 20px;
+}
+
+.sub-page-main .content ul li,
+.sub-page-main .content ol li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.sub-page-main .content ul li input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.sub-page-main .related-articles,
+.sub-page-main .comments-section {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.sub-page-main .comments-section textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+}
+
+.sub-page-main .comments-section button {
+    background-color: var(--soft-green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sub-page-main .comments-section button:hover {
+    background-color: #8dbb83;
+}
+/* CSS 스타일 끝 */
